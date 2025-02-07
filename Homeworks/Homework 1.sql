@@ -8,4 +8,22 @@ create table employees(
     primary key (eID)
 );
 
-select * from employees;
+create table departments(
+    depNumber int,
+    depName varchar(50),
+    mainOffice varchar(50),
+    officeCount int,
+    assignedEmployees int,
+    primary key (depNumber)
+);
+
+create table offices(
+    oID int,
+    oNumber int,
+    floor int,
+    size double precision,
+    maxOccupancy int,
+    primary key (oID)
+);
+
+select * from offices;
