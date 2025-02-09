@@ -14,7 +14,9 @@ create table departments(
     mainOffice varchar(50),
     officeCount int,
     assignedEmployees int,
-    primary key (depNumber)
+    managerID int,
+    primary key (depNumber, managerID),
+    foreign key (managerID) references employees (eID)
 );
 
 create table offices(
@@ -27,3 +29,6 @@ create table offices(
 );
 
 select * from offices;
+
+select * from departments;
+drop table departments;
