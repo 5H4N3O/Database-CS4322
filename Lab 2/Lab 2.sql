@@ -1,12 +1,13 @@
--- create a new version of the three tables
--- which you can call TwinsPlayerList2, TwinsBatting2, and TwinsFielding2.
--- You should create these by creating queries
--- on the relations master, batting, and fielding
--- Extra fields in batting anf fielding
--- Need to specify fields directly
--- Only need stuff from Twins from 2010 to 2015
--- all data for playerlist is in master
--- create table as (query)
+/*** PART 1:
+create a new version of the three tables
+which you can call TwinsPlayerList2, TwinsBatting2, and TwinsFielding2.
+You should create these by creating queries
+on the relations master, batting, and fielding
+Extra fields in batting anf fielding
+Need to specify fields directly
+Only need stuff from Twins from 2010 to 2015
+all data for playerlist is in master
+create table as (query) ***/
 
 -- TwinsBatting2
 create table pratt440.TwinsBatting2 as
@@ -59,3 +60,7 @@ alter table pratt440.TwinsPlayerlist2
 select * from pratt440.TwinsPlayerlist2;
 drop table pratt440.TwinsPlayerlist2;
 -- TwinsPlayerList2
+
+/*** PART 2: ***/
+/* 1. Print out the following statistics for each year Kirby Puckett was a batter.
+   yearID,g,ab,r,h,db,tr,hr,rbi,sb,cs,bb,HBP,SF */
