@@ -66,3 +66,16 @@ drop table pratt440.TwinsPlayerlist2;
    yearID,g,ab,r,h,db,tr,hr,rbi,sb,cs,bb,HBP,SF */
 select * from public.master where namefirst = 'Kirby' and namelast = 'Puckett';
 select * from public.batting where playerid = 'puckeki01';
+create table pratt440.KPbatting as
+    select yearID,g,ab,r,h,db,tr,hr,rbi,sb,cs,bb,HBP,SF
+    from public.batting
+    /* Need to run a subquery to find KP's playerid from
+       the master table using his first and last name,
+       since we need the playerid to find players in
+       the batting table */
+    where playerid = (
+        select m.playerid
+        from public.master m
+        where namefirst = 'Kirby' and namelast = 'Puckett');
+select * from pratt440.KPbatting;
+drop table pratt440.KPbatting;
