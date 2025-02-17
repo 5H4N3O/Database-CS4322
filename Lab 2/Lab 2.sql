@@ -33,7 +33,9 @@ where playerid = 'achteaj01';
 -- TwinsBatting2
 
 -- TwinsFielding2
-    create table pratt440.TwinsFielding2 as
+select cs, sb from public.fielding where yearid >= 2010 and yearid <= 2015 and teamid = 'MIN' and cs is not null;
+
+create table pratt440.TwinsFielding2 as
     select
         distinct playerid, yearid, stint, pos, g,
         innouts, po, a, e, dp, pb, wp, csb, ccs

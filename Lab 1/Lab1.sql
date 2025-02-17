@@ -73,3 +73,7 @@ drop table twinsplayerlist;
 drop table twinsbatting;
 drop table twinsfielding;
 
+/* Checking data with Lab 2 */
+select ccs, csb from twinsfielding where yearid >= 2010 and yearid <= 2015 and ccs is not null;
+
+
