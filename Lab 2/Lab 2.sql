@@ -44,9 +44,11 @@ create table pratt440.TwinsFielding2 as
 
 alter table pratt440.TwinsFielding2
     add primary key (playerid, yearid, stint, pos);
+
+select * from pratt440.TwinsFielding2;
+drop table pratt440.TwinsFielding2;
 -- TwinsFielding2
 
-drop table pratt440.TwinsBatting2;-- TwinsPlayerList2
 -- TwinsPlayerList2
 create table pratt440.TwinsPlayerlist2 as
     select
