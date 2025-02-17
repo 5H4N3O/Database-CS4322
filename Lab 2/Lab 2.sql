@@ -46,4 +46,12 @@ alter table pratt440.TwinsFielding2
     add primary key (playerid, yearid, stint, pos);
 -- TwinsFielding2
 
-drop table pratt440.TwinsBatting2;
+drop table pratt440.TwinsBatting2;-- TwinsPlayerList2
+create table pratt440.TwinsPlayerlist2 as
+    select
+	    distinct playerid, namelast, namefirst, namegiven, birthyear,
+	    birthmonth, birthday, weight, height, bats, throws
+    from public.master
+select * from pratt440.TwinsPlayerlist2;
+drop table pratt440.TwinsPlayerlist2;
+-- TwinsPlayerList2
