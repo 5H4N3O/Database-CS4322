@@ -64,3 +64,5 @@ drop table pratt440.TwinsPlayerlist2;
 /*** PART 2: ***/
 /* 1. Print out the following statistics for each year Kirby Puckett was a batter.
    yearID,g,ab,r,h,db,tr,hr,rbi,sb,cs,bb,HBP,SF */
+select * from public.master where namefirst = 'Kirby' and namelast = 'Puckett';
+select * from public.batting where playerid = 'puckeki01';
