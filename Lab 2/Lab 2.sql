@@ -38,7 +38,7 @@ select cs, sb from public.fielding where yearid >= 2010 and yearid <= 2015 and t
 create table pratt440.TwinsFielding2 as
     select
         distinct playerid, yearid, stint, pos, g,
-        innouts, po, a, e, dp, pb, wp, csb, ccs
+        innouts, po, a, e, dp, pb, wp, sb, cs
     from public.fielding
     where yearid >= 2010 and yearid <= 2015 and teamid = 'MIN';
 
