@@ -94,3 +94,19 @@ from KPbatting;
    BA = H / AB
    OBP = (H + BB + HBP) / (AB + BB + HBP + SF)
    SLG = (4 * HR + 3 * TR + 2 * DB + (H - HR - TR - DB)) / AB */
+
+alter table pratt440.KPbatting
+    add BA decimal, add OBP decimal, add SLG decimal;
+
+update pratt440.KPbatting
+set
+    BA = cast(H as decimal)/cast(AB as decimal),
+
+    OBP = (cast(H as decimal) + cast(BB as decimal) + cast(HBP as decimal)) /
+	    (cast(AB as decimal) + cast(BB as decimal) + cast(HBP as decimal) + cast(SF as decimal)),
+
+    SLG = (4 * cast(HR as decimal) + 3 * cast(TR as decimal) + 2 * cast(DB as decimal) +
+	(cast(H as decimal) - cast(HR as decimal) - cast(TR as decimal) - cast(DB as decimal))) /
+	cast(AB as decimal);
+
+select * from pratt440.KPbatting;
