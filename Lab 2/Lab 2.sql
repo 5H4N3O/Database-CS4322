@@ -145,3 +145,12 @@ where (e.yearid, e.BA) in(
     from pratt440.eligibleplayers e2
     group by e2.yearid
 );
+
+/* 5).Print the first and last names of every pitcher (players who have values in the pitching table)
+   who played for the Twins who played in a year that Kirby Puckett had an entry in batting for that year. */
+
+select * from public.pitching;
+
+select m.namefirst, m.namelast
+from public.pitching p, public.master m
+where p.playerid = m.playerid and p.yearid in(select yearid from pratt440.KPbatting);
