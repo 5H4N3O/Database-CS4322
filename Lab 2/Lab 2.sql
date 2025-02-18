@@ -153,4 +153,4 @@ select * from public.pitching;
 
 select m.namefirst, m.namelast
 from public.pitching p, public.master m
-where p.playerid = m.playerid and p.yearid in(select yearid from pratt440.KPbatting);
+where p.playerid = m.playerid and p.teamid = 'MIN' and p.yearid in(select yearid from pratt440.KPbatting);
