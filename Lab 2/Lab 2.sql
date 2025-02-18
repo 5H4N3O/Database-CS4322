@@ -124,7 +124,7 @@ from KPbatting;
 
 -- Gets all players with an AB >= 50 that played in the years that Kirby Puckett Played
 create table pratt440.eligiblePlayers as
-    select b.yearid, m.namefirst, m.namelast, b.H, b.AB
+    select b.yearid, b.playerid, m.namefirst, m.namelast, b.H, b.AB
     from public.batting b, public.master m
     where b.AB >= 50 and b.playerid = m.playerid and b.yearid in(select yearid from pratt440.KPbatting);
 
@@ -137,3 +137,11 @@ set
 
 select * from pratt440.eligibleplayers;
 drop table eligiblePlayers;
+
+select e.yearid, e.namefirst, e.namelast
+from pratt440.eligibleplayers e
+where (e.yearid, e.BA) in(
+    select e2.yearid, max(e2.BA)
+    from pratt440.eligibleplayers e2
+    group by e2.yearid
+);
