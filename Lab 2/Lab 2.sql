@@ -110,3 +110,11 @@ set
 	cast(AB as decimal);
 
 select * from pratt440.KPbatting;
+
+select
+    sum(g) as  g, sum(ab) as ab, sum(r) as r, sum(h) as h, sum(db) as db,
+    sum(tr) as tr, sum(hr) as hr, sum(rbi) as rbi, sum(sb) as sb,
+    sum(cs) as cs, sum(bb) as bb, sum(HBP) as HBP, sum(SF) as SF,
+    sum(BA) as BA, sum(OBP) as OBP, sum(SLG) as SLG
+from KPbatting;
+
