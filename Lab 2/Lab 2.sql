@@ -122,7 +122,18 @@ from KPbatting;
    the first and last names of the players who had the highest value for BA (for players whose AB >= 50)
    as well as the year they played.  If that player is Kirby Puckett omit that year. */
 
-select b.yearid, m.namefirst, m.namelast
-from public.batting b, public.master m
-where b.AB >= 50 and b.playerid = m.playerid and b.yearid in(select * from pratt440.KPbatting)
-group by b.yearid;
+-- Gets all players with an AB >= 50 that played in the years that Kirby Puckett Played
+create table pratt440.eligiblePlayers as
+    select b.yearid, m.namefirst, m.namelast, b.H, b.AB
+    from public.batting b, public.master m
+    where b.AB >= 50 and b.playerid = m.playerid and b.yearid in(select yearid from pratt440.KPbatting);
+
+alter table pratt440.eligiblePlayers
+    add BA decimal;
+
+update pratt440.eligiblePlayers
+set
+    BA = cast(H as decimal)/cast(AB as decimal);
+
+select * from pratt440.eligibleplayers;
+drop table eligiblePlayers;
