@@ -118,4 +118,11 @@ select
     sum(BA) as BA, sum(OBP) as OBP, sum(SLG) as SLG
 from KPbatting;
 
-/* 4). Write a query that finds, for all the years Kirby Puckett played, the first and last names of the players who had the highest value for BA (for players whose AB >= 50) as well as the year they played.  If that player is Kirby Puckett omit that year.
+/* 4). Write a query that finds, for all the years Kirby Puckett played,
+   the first and last names of the players who had the highest value for BA (for players whose AB >= 50)
+   as well as the year they played.  If that player is Kirby Puckett omit that year. */
+
+select b.yearid, m.namefirst, m.namelast
+from public.batting b, public.master m
+where b.AB >= 50 and b.playerid = m.playerid and b.yearid in(select * from pratt440.KPbatting)
+group by b.yearid;
