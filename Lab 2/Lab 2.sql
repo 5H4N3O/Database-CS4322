@@ -66,6 +66,7 @@ drop table pratt440.TwinsPlayerlist2;
    yearID,g,ab,r,h,db,tr,hr,rbi,sb,cs,bb,HBP,SF */
 select * from public.master where namefirst = 'Kirby' and namelast = 'Puckett';
 select * from public.batting where playerid = 'puckeki01';
+
 create table pratt440.KPbatting as
     select yearID,g,ab,r,h,db,tr,hr,rbi,sb,cs,bb,HBP,SF
     from public.batting
@@ -79,3 +80,11 @@ create table pratt440.KPbatting as
         where namefirst = 'Kirby' and namelast = 'Puckett');
 select * from pratt440.KPbatting;
 drop table pratt440.KPbatting;
+
+/* 2. All of these are counting values,
+   write a query that prints a total in each category (but not YEARID) */
+select
+    sum(g) as  g, sum(ab) as ab, sum(r) as r, sum(h) as h, sum(db) as db,
+    sum(tr) as tr, sum(hr) as hr, sum(rbi) as rbi, sum(sb) as sb,
+    sum(cs) as cs, sum(bb) as bb, sum(HBP) as HBP, sum(SF) as SF
+from KPbatting;
