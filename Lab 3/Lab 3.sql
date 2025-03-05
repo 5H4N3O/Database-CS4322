@@ -190,3 +190,12 @@ $$ language plpgsql;
 
 drop function pratt440.autodelete();
 drop trigger deletemaster on pratt440.master;
+
+select * from pratt440.master where playerid = 'Shane';
+select * from pratt440.batting where playerid = 'Shane';
+select * from pratt440.fielding where playerid = 'Shane';
+
+delete from pratt440.master where playerid = 'Shane';
+
+insert into pratt440.master(playerid)
+values ('Shane');
