@@ -149,6 +149,7 @@ Twins set as the team and 0 values for all of the other entries in each table.
 Then set up a trigger that is invoked when a player is deleted from the master table
 that removes any corresponding records in the hitting and pitching tables. */
 
+-- Insert trigger
 create trigger insertmaster
 after insert on pratt440.master
 for each row execute function pratt440.autoinsert();
@@ -168,3 +169,24 @@ $$ language plpgsql;
 
 drop function pratt440.autoinsert();
 drop trigger insertmaster on pratt440.master;
+
+-- Delete trigger
+create trigger deletemaster
+after delete on pratt440.master
+for each row execute function pratt440.autodelete();
+
+create function pratt440.autodelete()
+returns trigger as $$
+begin
+    delete from pratt440.batting
+    where playerid = old.playerid;
+
+    delete from pratt440.fielding
+    where playerid = old.playerid;
+
+    return old;
+end;
+$$ language plpgsql;
+
+drop function pratt440.autodelete();
+drop trigger deletemaster on pratt440.master;
