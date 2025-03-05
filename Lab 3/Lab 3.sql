@@ -161,7 +161,7 @@ begin
     select new.playerid,0,0,'MIN',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
     ;
     insert into pratt440.fielding(playerid, yearid, stint, teamid, lgid, pos, g, gs, innouts, po, a, e, dp, pb, wp, sb, cs, zr)
-    select new.playerid,0,0,n'MIN',0,0,0,0,0,0,0,0,0,0,0,0,0,0
+    select new.playerid,0,0,'MIN',0,0,0,0,0,0,0,0,0,0,0,0,0,0
     ;
     return new;
 end;
