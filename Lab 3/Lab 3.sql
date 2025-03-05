@@ -89,7 +89,6 @@ from avgperab a,
     where b.teamid = 'MIN'
     group by playerid
     )sq;
-select max(marginalrs) from pratt440.marginals;
 drop table pratt440.marginals;
 
 /** 5 **
@@ -134,13 +133,6 @@ where (m.playerid,m.marginalrs) = (m.playerid,rhigh) and
       (m7.playerid,m7.marginalrbis) = (m7.playerid,rbihigh) and
       (m8.playerid,m8.marginalrbis) = (m8.playerid,rbilow);
 
-select * from pratt440.marginals
-         where playerid='knoblch01' or
-               playerid='thompda01' or
-               playerid='carewro01' or
-               playerid='laudnti01' or
-               playerid='killeha01' or
-               playerid='tovarce01';
 
 /********** PART 2 **********
 Write two triggers. One should be triggered upon an insert into the master table
