@@ -89,7 +89,7 @@ from avgperab a,
     where b.teamid = 'MIN'
     group by playerid
     )sq;
-select * from pratt440.marginals;
+select max(marginalrs) from pratt440.marginals;
 drop table pratt440.marginals;
 
 /** 5 **
@@ -158,10 +158,10 @@ create function pratt440.autoinsert()
 returns trigger as $$
 begin
     insert into pratt440.batting(playerid, yearid, stint, teamid, lgid, g, ab, r, h, db, tr, hr, rbi, sb, cs, bb, so, ibb, hbp, sh, sf, gidp)
-    select new.playerid,0,0,'MIN',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+    values (new.playerid,0,0,'MIN',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)
     ;
-    insert into pratt440.fielding(playerid, yearid, stint, teamid, lgid, pos, g, gs, innouts, po, a, e, dp, pb, wp, sb, cs, zr)
-    select new.playerid,0,0,'MIN',0,0,0,0,0,0,0,0,0,0,0,0,0,0
+    insert into pratt440.pitching(playerid, yearid, stint, teamid, lgid, w, l, g, gs, cg, sho, sv, ipouts, h, er, hr, bb, so, baopp, era, ibb, wp, hbp, bk, bfp, gf, r, sh, sf, gidp)
+    values (new.playerid,0,0,'MIN',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)
     ;
     return new;
 end;
@@ -181,7 +181,7 @@ begin
     delete from pratt440.batting
     where playerid = old.playerid;
 
-    delete from pratt440.fielding
+    delete from pratt440.pitching
     where playerid = old.playerid;
 
     return old;
@@ -193,7 +193,7 @@ drop trigger deletemaster on pratt440.master;
 
 select * from pratt440.master where playerid = 'Shane';
 select * from pratt440.batting where playerid = 'Shane';
-select * from pratt440.fielding where playerid = 'Shane';
+select * from pratt440.pitching where playerid = 'Shane';
 
 delete from pratt440.master where playerid = 'Shane';
 
