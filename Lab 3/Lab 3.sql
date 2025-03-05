@@ -148,3 +148,23 @@ that automatically inserts a tuple into both the hitting and pitching tables wit
 Twins set as the team and 0 values for all of the other entries in each table.
 Then set up a trigger that is invoked when a player is deleted from the master table
 that removes any corresponding records in the hitting and pitching tables. */
+
+create trigger insertmaster
+after insert on pratt440.master
+for each row execute function pratt440.autoinsert();
+
+create function pratt440.autoinsert()
+returns trigger as $$
+begin
+    insert into pratt440.batting(playerid, yearid, stint, teamid, lgid, g, ab, r, h, db, tr, hr, rbi, sb, cs, bb, so, ibb, hbp, sh, sf, gidp)
+    select new.playerid,0,0,'MIN',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+    ;
+    insert into pratt440.fielding(playerid, yearid, stint, teamid, lgid, pos, g, gs, innouts, po, a, e, dp, pb, wp, sb, cs, zr)
+    select new.playerid,0,0,n'MIN',0,0,0,0,0,0,0,0,0,0,0,0,0,0
+    ;
+    return new;
+end;
+$$ language plpgsql;
+
+drop function pratt440.autoinsert();
+drop trigger insertmaster on pratt440.master;
